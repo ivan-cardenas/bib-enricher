@@ -490,13 +490,13 @@ async function fetchWithTimeout(promise, ms) {
 // ═══════════════════════════════════════════════════════════════
 
 const C = {
-  bg: "#08090d",
-  surface: "#0e1117",
-  border: "#1a1f2e",
-  borderHover: "#252d3d",
+  bg: "#1a1b1f",
+  surface: "#1b2029",
+  border: "#bac8f0",
+  borderHover: "#384255",
   text: "#e5e7eb",
   textMuted: "#bfc8d6",
-  textDim: "#213e70",
+  textDim: "#5779b4",
   accent: "#4f9eff",
   accentGlow: "rgba(79,158,255,0.15)",
   green: "#34d399",
