@@ -494,9 +494,9 @@ const C = {
   surface: "#0e1117",
   border: "#1a1f2e",
   borderHover: "#252d3d",
-  text: "#c8d0e0",
-  textMuted: "#4a5568",
-  textDim: "#2d3748",
+  text: "#e5e7eb",
+  textMuted: "#bfc8d6",
+  textDim: "#213e70",
   accent: "#4f9eff",
   accentGlow: "rgba(79,158,255,0.15)",
   green: "#34d399",
@@ -895,6 +895,42 @@ export default function BibEnricher() {
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: ${C.bg}; }
         ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 2px; }
       `}</style>
+
+      {/* Buy me a coffee – fixed bottom-right */}
+      <div style={{
+        position: "fixed", bottom: 20, right: 20, zIndex: 100,
+        display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8,
+      }}>
+        <div style={{
+          fontSize: 11, color: C.textMuted, textAlign: "right", lineHeight: 1.5,
+          background: "rgba(8,9,13,0.85)", backdropFilter: "blur(6px)",
+          padding: "7px 12px", borderRadius: 8,
+          border: `1px solid ${C.border}`,
+        }}>
+          Did you find this useful?<br />
+          <span style={{ color: C.accent }}>It's free — but a coffee keeps it alive.</span>
+        </div>
+        <a
+          href="https://www.buymeacoffee.com/ivancardenas"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "flex", alignItems: "center", gap: 8,
+            padding: "9px 16px",
+            background: "#ffdd00",
+            borderRadius: 10,
+            fontSize: 12, fontWeight: 700,
+            color: "#1a1000",
+            textDecoration: "none",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+            transition: "transform 0.15s, box-shadow 0.15s",
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.5)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.4)"; }}
+        >
+          <span style={{ fontSize: 16 }}>☕</span> Buy me a coffee
+        </a>
+      </div>
 
       {entries.length === 0 ? (
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "40px 32px" }}>
