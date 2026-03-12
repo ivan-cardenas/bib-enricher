@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it using the following metadata."
+type: software
+
+title: "BibTeX Enricher"
+abstract: >
+  A browser-based tool that automatically enriches BibTeX bibliography entries
+  with metadata — including abstracts, keywords, DOIs, citation counts, and
+  open-access links — by querying Semantic Scholar, OpenAlex, CrossRef,
+  Europe PMC, Unpaywall, DataCite, and CORE in parallel. No installation or
+  backend required; runs entirely in the browser.
+
+authors:
+  - family-names: Cardenas
+    given-names: Ivan
+    orcid: "0009-0005-0245-633X"
+    email: ""
+
+version: "1.0.0"
+date-released: "2026-03-12"
+url: "https://ivan-cardenas.github.io/bib-enricher/"
+repository-code: "https://github.com/ivan-cardenas/bib-enricher"
+license: MIT
+
+keywords:
+  - bibliography
+  - BibTeX
+  - metadata enrichment
+  - academic research
+  - literature review
+  - systematic review
+  - Semantic Scholar
+  - OpenAlex
+  - CrossRef
+  - Europe PMC
+  - open access
