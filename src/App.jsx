@@ -31,6 +31,10 @@ function parseBib(text) {
   return entries;
 }
 
+function stripBraces(str) {
+  return str ? str.replace(/[{}]/g, "").replace(/\s+/g, " ").trim() : str;
+}
+
 function serializeBib(entries) {
   return entries.map(e => {
     const FIELD_ORDER = ["title","author","year","journal","booktitle","volume","number","issue",
@@ -40,7 +44,7 @@ function serializeBib(entries) {
     const lines = [`@${e.type}{${e.key},`];
     for (const k of allKeys) {
       const v = e.fields[k];
-      if (v && String(v).trim()) lines.push(`  ${k} = {${v}},`);
+      if (v && String(v).trim()) lines.push(`  ${k} = {${stripBraces(String(v))}},`);
     }
     lines.push(`}`);
     return lines.join("\n");
@@ -51,8 +55,8 @@ function serializeBib(entries) {
 // ID EXTRACTION
 // ═══════════════════════════════════════════════════════════════
 function extractIds(fields) {
-  const url = fields.url || "";
-  const rawDoi = fields.doi || "";
+  const url = stripBraces(fields.url || "");
+  const rawDoi = stripBraces(fields.doi || "");
   let doi = rawDoi ||
     url.match(/https?:\/\/(?:dx\.)?doi\.org\/(.+)/)?.[1]?.trim() ||
     url.match(/(10\.\d{4,}\/[^\s"&]+)/)?.[1]?.trim() || null;
@@ -762,7 +766,7 @@ export default function BibEnricher() {
     const allEntryIds = entries.map(e => ({
       key: e.key,
       entry: e,
-      ids: { ...extractIds(e.fields), title: e.fields.title || null },
+      ids: { ...extractIds(e.fields), title: stripBraces(e.fields.title) || null },
     }));
 
     // ── PHASE 1: Batch fetch SS + OA simultaneously ──────────────
